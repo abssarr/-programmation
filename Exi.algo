@@ -1,38 +1,26 @@
-Algorithme SOMME_ELEMENTS_DISTINCTS(tableau1, tableau2)
-  // Initialisation
-  somme ← 0
-  elementsDistincts ← nouveau tableau vide
-  
-  // Fonction utilitaire pour vérifier l'existence d'un élément dans un tableau
-  Fonction CONTIENT(tableau, element)
-    POUR CHAQUE x DANS tableau
-      SI x == element ALORS
-        RETOURNER Vrai
-      FIN SI
-    FIN POUR
-    RETOURNER Faux
-  Fin Fonction
-  
-  // Étape 1 : Parcourir le premier tableau et ajouter les éléments distincts
-  POUR CHAQUE element DANS tableau1
-    SI NON CONTIENT(elementsDistincts, element) ALORS
-      AJOUTER element À elementsDistincts
-    FIN SI
-  FIN POUR
-  
-  // Étape 2 : Parcourir le deuxième tableau et ajouter les éléments distincts
-  POUR CHAQUE element DANS tableau2
-    SI NON CONTIENT(elementsDistincts, element) ALORS
-      AJOUTER element À elementsDistincts
-    FIN SI
-  FIN POUR
-  
-  // Étape 3 : Calculer la somme des éléments du tableau distincts
-  POUR CHAQUE element DANS elementsDistincts
-    somme ← somme + element
-  FIN POUR
-  
-  // Étape 4 : Renvoyer le résultat
-  RETOURNER somme
+Algorithme SommeElementsDistincts
+    // Entrée : deux tableaux d'entiers T1 et T2
+    // Sortie : somme des éléments présents dans un seul des deux tableaux
 
-Fin Algorithme
+    Début
+        T1 ← [3, 1, 7, 9]
+        T2 ← [2, 4, 1, 9, 3]
+
+        somme ← 0
+
+        // Parcourir T1 : ajouter les éléments absents de T2
+        Pour i allant de 0 à longueur(T1)-1 faire
+            si T1[i] n'est pas dans T2 alors
+                somme ← somme + T1[i]
+            fin si
+        Fin Pour
+
+        // Parcourir T2 : ajouter les éléments absents de T1
+        Pour j allant de 0 à longueur(T2)-1 faire
+            si T2[j] n'est pas dans T1 alors
+                somme ← somme + T2[j]
+            fin si
+        Fin Pour
+
+        Afficher "Somme des éléments distincts = ", somme
+    Fin
